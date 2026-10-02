@@ -1,0 +1,26 @@
+{
+  "id": "./",
+  "name": "SNVTTC PongBot",
+  "short_name": "PongBot",
+  "description": "SNVTTC training control for the PongBot Nova S Pro.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#1e272e",
+  "theme_color": "#1e272e",
+  "categories": ["sports", "utilities"],
+  "icons": [
+    {
+      "src": "icons/snvttc-pongbot-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/snvttc-pongbot-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
