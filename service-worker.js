@@ -1,11 +1,11 @@
-const CACHE_NAME = 'nova-app-v1';
+const CACHE_NAME = 'nova-app-v2';
 
 const APP_SHELL = [
     './',
     './index.html',
     './manifest.webmanifest',
     './css/style.css',
-    './js/main.js',
+    './js/main.js?v=2',
     './js/state.js',
     './js/constants.js',
     './js/default-drills.js',
@@ -22,7 +22,9 @@ const APP_SHELL = [
 self.addEventListener('install', event => {
     event.waitUntil(
         caches.open(CACHE_NAME)
-            .then(cache => cache.addAll(APP_SHELL))
+            .then(cache => cache.addAll(
+                APP_SHELL.map(url => new Request(url, { cache: 'reload' }))
+            ))
             .then(() => self.skipWaiting())
     );
 });
@@ -46,7 +48,7 @@ self.addEventListener('fetch', event => {
     if (request.method !== 'GET' || url.origin !== self.location.origin) return;
 
     event.respondWith(
-        fetch(request)
+        fetch(request, { cache: 'no-store' })
             .then(response => {
                 if (response.ok) {
                     const cachedResponse = response.clone();

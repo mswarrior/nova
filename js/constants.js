@@ -11,7 +11,7 @@ export const CATEGORIES = {
     basic: ["drive(f)", "drive(b)", "push(f)", "push(b)", "loop(f)", "loop(b)"],
     combined: ["loop(b)-drive(b)", "loop(f)-drive(f)", "drive(f)-drive(b)", "push(f)-drive(f)", "push(b)-loop(b)", "loop(f)-drive(b)", "push(f)-loop(b)", "drive(f)-drive(f)", "push(b)-loop(f)", "push(f)-loop(f)", "loop(f)-loop(f)", "loop(b)-drive(f)"],
     complex: ["push(b)-loop(f)-drive(b)", "push(f)-loop(b)-drive(f)", "loop(f)-drive(f)-drive(b)", "loop(b)-drive(f)-drive(b)", "drive(f)-drive(f)-drive(f)", "push(f)-loop(f)-drive(f)", "push(b)-loop(b)-drive(b)", "push(f)-loop(b)-drive(b)", "loop(f)-drive(b)-drive(f)", "loop(b)-drive(b)-drive(f)", "push(b)-loop(f)-drive(f)", "push(b)-loop(b)-drive(f)", "drive(b)-drive(f)-drive(f)", "random-drive", "23-random-drive", "all-random"],
-    "custom-a": [], "custom-b": [], "custom-c": [] 
+    "custom-a": [], "custom-b": [], "custom-c": [], "custom-d": []
 };
 
 // Physics Constants

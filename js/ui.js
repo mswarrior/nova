@@ -69,7 +69,7 @@ window.handleTabDrop = (e, targetCat) => {
     let drillObj = null;
     let drillIndex = -1;
 
-    ['custom-a', 'custom-b', 'custom-c'].forEach(cat => {
+    ['custom-a', 'custom-b', 'custom-c', 'custom-d'].forEach(cat => {
         const idx = userCustomDrills[cat].findIndex(d => d.key === key);
         if (idx !== -1) {
             sourceCat = cat;
@@ -88,7 +88,7 @@ window.handleTabDrop = (e, targetCat) => {
     }
 
     const targetChar = targetCat.split('-')[1].toUpperCase();
-    let newKey = key.replace(/^cust_[ABC]_/i, `cust_${targetChar}_`);
+    let newKey = key.replace(/^cust_[A-D]_/i, `cust_${targetChar}_`);
     
     if (currentDrills[newKey]) {
         newKey = `${newKey}_${Date.now()}`;
@@ -130,7 +130,7 @@ export function renderDrillButtons() {
         }
     });
 
-    ['custom-a', 'custom-b', 'custom-c'].forEach(cat => {
+    ['custom-a', 'custom-b', 'custom-c', 'custom-d'].forEach(cat => {
         const container = document.getElementById(`view-${cat}`);
         if (!container) return;
         container.innerHTML = '';
@@ -368,7 +368,7 @@ export function setTheme(themeName) {
 }
 
 export function switchTab(catName, btn) {
-    const tabs = ['basic','combined','complex','custom-a','custom-b','custom-c'];
+    const tabs = ['basic','combined','complex','custom-a','custom-b','custom-c','custom-d'];
     tabs.forEach(c => {
         const el = document.getElementById('view-'+c);
         if(el) el.classList.add('hidden');
@@ -381,7 +381,7 @@ export function switchTab(catName, btn) {
 
     const diffGroup = document.getElementById('grp-difficulty');
     if(diffGroup) {
-        diffGroup.style.display = ['custom-a', 'custom-b', 'custom-c'].includes(catName) ? 'none' : 'flex';
+        diffGroup.style.display = ['custom-a', 'custom-b', 'custom-c', 'custom-d'].includes(catName) ? 'none' : 'flex';
     }
 }
 

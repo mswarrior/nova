@@ -60,7 +60,18 @@ export function initData() {
 
     currentDrills = savedDrills ? JSON.parse(savedDrills) : 
                    (userDefaults ? JSON.parse(userDefaults) : JSON.parse(JSON.stringify(DEFAULT_DRILLS)));
-    userCustomDrills = customData ? JSON.parse(customData) : JSON.parse(JSON.stringify(DEFAULT_USER_CUSTOM_DRILLS));
+    const defaultCustomDrills = JSON.parse(JSON.stringify(DEFAULT_USER_CUSTOM_DRILLS));
+    if (customData) {
+        try {
+            const savedCustomDrills = JSON.parse(customData);
+            userCustomDrills = { ...defaultCustomDrills, ...savedCustomDrills };
+        } catch(e) {
+            console.error("Error loading custom drill groups", e);
+            userCustomDrills = defaultCustomDrills;
+        }
+    } else {
+        userCustomDrills = defaultCustomDrills;
+    }
     normalizeDrills();
 }
 
@@ -148,7 +159,7 @@ function formatNameForKey(key) {
 export function importCustomDrills(csvText) {
     try {
         const lines = csvText.split(/\r?\n/);
-        const newCustomData = { "custom-a": [], "custom-b": [], "custom-c": [] };
+        const newCustomData = { "custom-a": [], "custom-b": [], "custom-c": [], "custom-d": [] };
         
         for (let cat in userCustomDrills) {
             userCustomDrills[cat].forEach(drill => { if (currentDrills[drill.key]) delete currentDrills[drill.key]; });
@@ -162,6 +173,7 @@ export function importCustomDrills(csvText) {
             if(val === 'A') return 'custom-a';
             if(val === 'B') return 'custom-b';
             if(val === 'C') return 'custom-c';
+            if(val === 'D') return 'custom-d';
             if(val === 'BASIC') return 'basic';
             if(val === 'COMBINED') return 'combined';
             if(val === 'COMPLEX') return 'complex';
@@ -301,7 +313,7 @@ export function exportCustomDrills() {
         }
     });
 
-    const cats = { 'custom-a': 'A', 'custom-b': 'B', 'custom-c': 'C' };
+    const cats = { 'custom-a': 'A', 'custom-b': 'B', 'custom-c': 'C', 'custom-d': 'D' };
     for (let catKey in cats) {
         const setLabel = cats[catKey];
         const drillList = userCustomDrills[catKey];

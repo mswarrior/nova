@@ -516,7 +516,7 @@ function updateTitleDisplay(key) {
         if (parts.length >= 3) {
            const catKey = `custom-${parts[1].toLowerCase()}`;
            const entry = userCustomDrills[catKey]?.find(d => d.key === key);
-           displayName = entry ? entry.name : key.replace(/^cust_[A-C]_/, '');
+           displayName = entry ? entry.name : key.replace(/^cust_[A-D]_/, '');
         }
     } else {
         displayName = key.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());

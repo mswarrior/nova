@@ -55,12 +55,12 @@ document.addEventListener('DOMContentLoaded', () => {
     renderDrillButtons();
     updateStatsUI();
     setupEventListeners();
-    console.log("Nova Drill Control: Modules Loaded");
+    console.log("SNVTTC Drill Control: Modules Loaded");
 });
 
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./service-worker.js')
+        navigator.serviceWorker.register('./service-worker.js?v=2', { updateViaCache: 'none' })
             .then(registration => registration.update())
             .catch(error => console.warn('Service worker registration failed:', error));
     });

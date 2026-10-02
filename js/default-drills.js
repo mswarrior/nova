@@ -80,5 +80,6 @@ export const DEFAULT_USER_CUSTOM_DRILLS = {
     }
   ],
   "custom-b": [],
-  "custom-c": []
+  "custom-c": [],
+  "custom-d": []
 };

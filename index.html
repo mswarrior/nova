@@ -8,7 +8,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="PongBot">
-    <title>Nova Drill Control</title>
+    <title>SNVTTC Drill Control</title>
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="icon" type="image/png" sizes="192x192" href="icons/snvttc-pongbot-192x192.png">
     <link rel="apple-touch-icon" href="icons/snvttc-pongbot-192x192.png">
@@ -19,7 +19,7 @@
 <div class="container">
     
     <header>
-        <h1>Nova Drill Control</h1>
+        <h1>SNVTTC Drill Control</h1>
         <div class="menu-btn" onclick="toggleMenu()">
             <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
         </div>
@@ -118,6 +118,12 @@
              ondragover="window.allowTabDrop(event)">
             <div class="icon-grid"><div class="icon-dot"></div><div class="icon-dot"></div><div class="icon-dot"></div><div class="icon-dot"></div></div> Custom C
         </div>
+        <div class="tab-btn"
+             onclick="switchTab('custom-d', this)"
+             ondrop="window.handleTabDrop(event, 'custom-d')"
+             ondragover="window.allowTabDrop(event)">
+            <div class="icon-grid"><div class="icon-dot"></div><div class="icon-dot"></div><div class="icon-dot"></div><div class="icon-dot"></div></div> Custom D
+        </div>
     </div>
 
     <div id="view-basic" class="drill-list"></div>
@@ -126,6 +132,7 @@
     <div id="view-custom-a" class="drill-list hidden"></div>
     <div id="view-custom-b" class="drill-list hidden"></div>
     <div id="view-custom-c" class="drill-list hidden"></div>
+    <div id="view-custom-d" class="drill-list hidden"></div>
 
     <div class="footer-row">
         <div id="stats-display">Balls: 0 | Drills: 0</div>
@@ -209,6 +216,7 @@
                     <div class="mode-option active" onclick="window.selectDlCategory('custom-a', this)">Custom A</div>
                     <div class="mode-option" onclick="window.selectDlCategory('custom-b', this)">Custom B</div>
                     <div class="mode-option" onclick="window.selectDlCategory('custom-c', this)">Custom C</div>
+                    <div class="mode-option" onclick="window.selectDlCategory('custom-d', this)">Custom D</div>
                 </div>
             </div>
         </div>
@@ -236,6 +244,7 @@
                     <div class="mode-option active" onclick="window.selectSaveCategory('custom-a', this)">Custom A</div>
                     <div class="mode-option" onclick="window.selectSaveCategory('custom-b', this)">Custom B</div>
                     <div class="mode-option" onclick="window.selectSaveCategory('custom-c', this)">Custom C</div>
+                    <div class="mode-option" onclick="window.selectSaveCategory('custom-d', this)">Custom D</div>
                 </div>
             </div>
         </div>
@@ -252,8 +261,8 @@
             <div class="modal-close" onclick="window.closeAboutModal()">×</div>
         </div>
         <div class="modal-body" style="display:flex; flex-direction:column; align-items:center; text-align:center; gap:15px; padding:20px 0;">
-            <h3 style="margin:0; color:var(--text);">Nova Drill Control</h3>
-            <a href="https://github.com/olanga/nova" target="_blank" 
+            <h3 style="margin:0; color:var(--text);">SNVTTC Drill Control</h3>
+            <a href="https://github.com/mswarrior/nova" target="_blank"
                style="color:var(--primary); font-weight:700; text-decoration:none; padding:10px 20px; border:2px solid var(--primary); border-radius:12px; transition:0.2s;">
                View on GitHub
             </a>
@@ -291,7 +300,7 @@
     </div>
 </div>
 
-<script type="module" src="js/main.js"></script>
+<script type="module" src="js/main.js?v=2"></script>
 
 </body>
 </html>
