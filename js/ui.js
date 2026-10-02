@@ -69,7 +69,7 @@ window.handleTabDrop = (e, targetCat) => {
     let drillObj = null;
     let drillIndex = -1;
 
-    ['custom-a', 'custom-b', 'custom-c', 'custom-d'].forEach(cat => {
+    ['custom-d', 'custom-a', 'custom-b', 'custom-c'].forEach(cat => {
         const idx = userCustomDrills[cat].findIndex(d => d.key === key);
         if (idx !== -1) {
             sourceCat = cat;
@@ -130,7 +130,7 @@ export function renderDrillButtons() {
         }
     });
 
-    ['custom-a', 'custom-b', 'custom-c', 'custom-d'].forEach(cat => {
+    ['custom-d', 'custom-a', 'custom-b', 'custom-c'].forEach(cat => {
         const container = document.getElementById(`view-${cat}`);
         if (!container) return;
         container.innerHTML = '';
@@ -368,7 +368,7 @@ export function setTheme(themeName) {
 }
 
 export function switchTab(catName, btn) {
-    const tabs = ['basic','combined','complex','custom-a','custom-b','custom-c','custom-d'];
+    const tabs = ['basic','combined','complex','custom-d','custom-a','custom-b','custom-c'];
     tabs.forEach(c => {
         const el = document.getElementById('view-'+c);
         if(el) el.classList.add('hidden');

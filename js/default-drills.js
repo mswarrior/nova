@@ -51,7 +51,7 @@ export const DEFAULT_DRILLS = {
 };
 
 export const DEFAULT_USER_CUSTOM_DRILLS = {
-  "custom-a": [
+  "custom-d": [
     {
       "name": "BASIC FH (1-2)",
       "key": "cust_A_BASIC_FH_(1-2)"
@@ -111,5 +111,5 @@ export const DEFAULT_USER_CUSTOM_DRILLS = {
   ],
   "custom-b": [],
   "custom-c": [],
-  "custom-d": []
+  "custom-a": []
 };

@@ -7,7 +7,7 @@ import { uploadDrill } from './cloud.js';
 // --- Local State ---
 let tempDrillData = null;
 let editingDrillKey = null;
-let selectedSaveCat = 'custom-a'; 
+let selectedSaveCat = 'custom-d';
 
 // --- Public Module Functions ---
 
@@ -393,7 +393,7 @@ window.handleDeleteBall = (stepIdx, optIdx) => {
 };
 
 window.handleSaveAsDrill = () => {
-    selectedSaveCat = 'custom-a';
+    selectedSaveCat = 'custom-d';
     const nameInput = document.getElementById('save-name');
     if (nameInput) nameInput.value = '';
     
@@ -410,6 +410,11 @@ window.handleSaveAsDrill = () => {
 window.closeSaveAsModal = () => {
     document.getElementById('save-as-modal').classList.remove('open');
 };
+
+function findCustomCategory(key) {
+    return ['custom-d', 'custom-a', 'custom-b', 'custom-c']
+        .find(category => userCustomDrills[category]?.some(drill => drill.key === key));
+}
 
 window.selectSaveCategory = (val, btn) => {
     selectedSaveCat = val;
@@ -458,8 +463,7 @@ window.handleDeleteDrill = () => {
     if (!editingDrillKey || !editingDrillKey.startsWith('cust_')) return;
     if (!confirm("Delete this drill?")) return;
 
-    const parts = editingDrillKey.split('_');
-    const catKey = `custom-${parts[1].toLowerCase()}`;
+    const catKey = findCustomCategory(editingDrillKey);
     if (userCustomDrills[catKey]) {
         userCustomDrills[catKey] = userCustomDrills[catKey].filter(d => d.key !== editingDrillKey);
     }
@@ -483,9 +487,9 @@ window.handleRenameDrill = () => {
     if (!newName || newName === currentName) return;
     if (newName.length > 40) { showToast("Name too long"); return; }
 
-    const parts = editingDrillKey.split('_'); 
-    const catChar = parts[1]; 
-    const catListKey = `custom-${catChar.toLowerCase()}`;
+    const catListKey = findCustomCategory(editingDrillKey);
+    if (!catListKey) return;
+    const catChar = catListKey.split('-')[1].toUpperCase();
     const newKey = `cust_${catChar}_${newName.replace(/\s+/g, '_')}_${Date.now()}`;
     
     const list = userCustomDrills[catListKey];
@@ -512,12 +516,11 @@ function updateTitleDisplay(key) {
     
     if (key.startsWith('cust_')) {
         isCustom = true;
-        const parts = key.split('_');
-        if (parts.length >= 3) {
-           const catKey = `custom-${parts[1].toLowerCase()}`;
-           const entry = userCustomDrills[catKey]?.find(d => d.key === key);
-           displayName = entry ? entry.name : key.replace(/^cust_[A-D]_/, '');
-        }
+        const catKey = findCustomCategory(key);
+        const entry = catKey
+            ? userCustomDrills[catKey]?.find(d => d.key === key)
+            : null;
+        displayName = entry ? entry.name : key.replace(/^cust_[A-D]_/, '');
     } else {
         displayName = key.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
     }

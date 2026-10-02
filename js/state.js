@@ -8,6 +8,9 @@ export let selectedLevel = 1;
 export let runMode = "reps";
 export let appStats = { balls: 0, drills: 0 };
 
+const CUSTOM_GROUP_LAYOUT_VERSION = '2';
+const CUSTOM_GROUP_LAYOUT_KEY = 'nova_custom_group_layout';
+
 // --- NEW: Session Summary State ---
 let sessionSnapshot = { balls: 0, drills: 0 };
 let sessionStartTime = 0;
@@ -72,7 +75,29 @@ export function initData() {
     } else {
         userCustomDrills = defaultCustomDrills;
     }
+    migrateCustomGroups(Boolean(customData));
     normalizeDrills();
+}
+
+function migrateCustomGroups(hasSavedCustomData) {
+    if (localStorage.getItem(CUSTOM_GROUP_LAYOUT_KEY) === CUSTOM_GROUP_LAYOUT_VERSION) return;
+
+    if (hasSavedCustomData) {
+        const formerCustomA = Array.isArray(userCustomDrills['custom-a'])
+            ? userCustomDrills['custom-a']
+            : [];
+        const existingLibrary = Array.isArray(userCustomDrills['custom-d'])
+            ? userCustomDrills['custom-d']
+            : [];
+
+        // Custom A was the original catalog. Preserve its order, then retain
+        // anything that was already stored in Custom D.
+        userCustomDrills['custom-d'] = [...formerCustomA, ...existingLibrary];
+        userCustomDrills['custom-a'] = [];
+        localStorage.setItem('custom_data', JSON.stringify(userCustomDrills));
+    }
+
+    localStorage.setItem(CUSTOM_GROUP_LAYOUT_KEY, CUSTOM_GROUP_LAYOUT_VERSION);
 }
 
 function normalizeDrills() {

@@ -200,7 +200,7 @@ window.handleDrillClick = (key, btn) => {
 
 // --- DOWNLOAD MODAL LOGIC (New) ---
 
-let selectedDownloadCat = 'custom-a';
+let selectedDownloadCat = 'custom-d';
 
 // 1. Open the Modal
 window.handleDownloadDialog = () => {
@@ -209,7 +209,7 @@ window.handleDownloadDialog = () => {
     if(menu) menu.classList.remove('open');
 
     // Reset State
-    selectedDownloadCat = 'custom-a';
+    selectedDownloadCat = 'custom-d';
     const codeInput = document.getElementById('dl-code');
     if (codeInput) codeInput.value = '';
     

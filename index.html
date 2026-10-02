@@ -100,39 +100,39 @@
             <div class="icon-grid"><div class="icon-dot"></div><div class="icon-dot"></div><div class="icon-dot"></div><div class="icon-dot"></div></div> Complex
         </div>
         
+        <div class="tab-btn"
+             onclick="switchTab('custom-d', this)"
+             ondrop="window.handleTabDrop(event, 'custom-d')"
+             ondragover="window.allowTabDrop(event)">
+            <div class="icon-grid"><div class="icon-dot"></div><div class="icon-dot"></div><div class="icon-dot"></div><div class="icon-dot"></div></div> Library
+        </div>
         <div class="tab-btn" 
              onclick="switchTab('custom-a', this)"
              ondrop="window.handleTabDrop(event, 'custom-a')" 
              ondragover="window.allowTabDrop(event)">
-            <div class="icon-grid"><div class="icon-dot"></div><div class="icon-dot"></div><div class="icon-dot"></div><div class="icon-dot"></div></div> Custom A
+            <div class="icon-grid"><div class="icon-dot"></div><div class="icon-dot"></div><div class="icon-dot"></div><div class="icon-dot"></div></div> Session A
         </div>
         <div class="tab-btn" 
              onclick="switchTab('custom-b', this)"
              ondrop="window.handleTabDrop(event, 'custom-b')" 
              ondragover="window.allowTabDrop(event)">
-            <div class="icon-grid"><div class="icon-dot"></div><div class="icon-dot"></div><div class="icon-dot"></div><div class="icon-dot"></div></div> Custom B
-        </div>
-        <div class="tab-btn" 
-             onclick="switchTab('custom-c', this)"
-             ondrop="window.handleTabDrop(event, 'custom-c')" 
-             ondragover="window.allowTabDrop(event)">
-            <div class="icon-grid"><div class="icon-dot"></div><div class="icon-dot"></div><div class="icon-dot"></div><div class="icon-dot"></div></div> Custom C
+            <div class="icon-grid"><div class="icon-dot"></div><div class="icon-dot"></div><div class="icon-dot"></div><div class="icon-dot"></div></div> Session B
         </div>
         <div class="tab-btn"
-             onclick="switchTab('custom-d', this)"
-             ondrop="window.handleTabDrop(event, 'custom-d')"
+             onclick="switchTab('custom-c', this)"
+             ondrop="window.handleTabDrop(event, 'custom-c')"
              ondragover="window.allowTabDrop(event)">
-            <div class="icon-grid"><div class="icon-dot"></div><div class="icon-dot"></div><div class="icon-dot"></div><div class="icon-dot"></div></div> Custom D
+            <div class="icon-grid"><div class="icon-dot"></div><div class="icon-dot"></div><div class="icon-dot"></div><div class="icon-dot"></div></div> Session C
         </div>
     </div>
 
     <div id="view-basic" class="drill-list"></div>
     <div id="view-combined" class="drill-list hidden"></div>
     <div id="view-complex" class="drill-list hidden"></div>
+    <div id="view-custom-d" class="drill-list hidden"></div>
     <div id="view-custom-a" class="drill-list hidden"></div>
     <div id="view-custom-b" class="drill-list hidden"></div>
     <div id="view-custom-c" class="drill-list hidden"></div>
-    <div id="view-custom-d" class="drill-list hidden"></div>
 
     <div class="footer-row">
         <div id="stats-display">Balls: 0 | Drills: 0</div>
@@ -213,10 +213,10 @@
             <div>
                 <div class="section-label" style="text-align:center; margin-bottom:8px;">Select Destination</div>
                 <div class="mode-switch" id="dl-cat-switch">
-                    <div class="mode-option active" onclick="window.selectDlCategory('custom-a', this)">Custom A</div>
-                    <div class="mode-option" onclick="window.selectDlCategory('custom-b', this)">Custom B</div>
-                    <div class="mode-option" onclick="window.selectDlCategory('custom-c', this)">Custom C</div>
-                    <div class="mode-option" onclick="window.selectDlCategory('custom-d', this)">Custom D</div>
+                    <div class="mode-option active" onclick="window.selectDlCategory('custom-d', this)">Library</div>
+                    <div class="mode-option" onclick="window.selectDlCategory('custom-a', this)">Session A</div>
+                    <div class="mode-option" onclick="window.selectDlCategory('custom-b', this)">Session B</div>
+                    <div class="mode-option" onclick="window.selectDlCategory('custom-c', this)">Session C</div>
                 </div>
             </div>
         </div>
@@ -241,10 +241,10 @@
             <div>
                 <div class="section-label" style="text-align:center; margin-bottom:8px;">Select Destination</div>
                 <div class="mode-switch" id="save-cat-switch">
-                    <div class="mode-option active" onclick="window.selectSaveCategory('custom-a', this)">Custom A</div>
-                    <div class="mode-option" onclick="window.selectSaveCategory('custom-b', this)">Custom B</div>
-                    <div class="mode-option" onclick="window.selectSaveCategory('custom-c', this)">Custom C</div>
-                    <div class="mode-option" onclick="window.selectSaveCategory('custom-d', this)">Custom D</div>
+                    <div class="mode-option active" onclick="window.selectSaveCategory('custom-d', this)">Library</div>
+                    <div class="mode-option" onclick="window.selectSaveCategory('custom-a', this)">Session A</div>
+                    <div class="mode-option" onclick="window.selectSaveCategory('custom-b', this)">Session B</div>
+                    <div class="mode-option" onclick="window.selectSaveCategory('custom-c', this)">Session C</div>
                 </div>
             </div>
         </div>
