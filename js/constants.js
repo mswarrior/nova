@@ -1,3 +1,5 @@
+export { DEFAULT_DRILLS, DEFAULT_USER_CUSTOM_DRILLS } from './default-drills.js';
+
 export const SERVICE_UUID = 0xfeff;
 export const UUID_S = "02f00000-0000-0000-0000-00000000fe00";
 export const UUID_N = "02f00000-0000-0000-0000-00000000ff02";
@@ -46,7 +48,7 @@ const LOOP_F = [1520, 3572, 50, 5, 10, 1];
 // Example: [A, B] -> [ [[...A]], [[...B]] ]
 const combine = (arr) => arr.map(d => [d]);
 
-export const DEFAULT_DRILLS = {
+export const PONGBOT_DEFAULT_DRILLS = {
     // --- BASIC ---
     "push(b)": { 1: [mkStep(...PUSH_B)], 2: [mkStep(1205, 3257, 50, -5, 20, 1)], 3: [mkStep(863, 3599, 50, -5, 30, 1)] },
     "push(f)": { 1: [mkStep(...PUSH_F)], 2: [mkStep(1205, 3257, 50, 5, 20, 1)], 3: [mkStep(863, 3599, 50, 5, 30, 1)] },

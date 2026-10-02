@@ -1,8 +1,8 @@
-import { DEFAULT_DRILLS, RPM_MIN, RPM_MAX, SPIN_LIMITS, CATEGORIES } from './constants.js';
+import { DEFAULT_DRILLS, DEFAULT_USER_CUSTOM_DRILLS, RPM_MIN, RPM_MAX, SPIN_LIMITS, CATEGORIES } from './constants.js';
 import { showToast } from './utils.js';
 
 export let currentDrills = {};
-export let userCustomDrills = { "custom-a": [], "custom-b": [], "custom-c": [] };
+export let userCustomDrills = JSON.parse(JSON.stringify(DEFAULT_USER_CUSTOM_DRILLS));
 export let drillOrder = JSON.parse(JSON.stringify(CATEGORIES)); 
 export let selectedLevel = 1;
 export let runMode = "reps";
@@ -60,7 +60,7 @@ export function initData() {
 
     currentDrills = savedDrills ? JSON.parse(savedDrills) : 
                    (userDefaults ? JSON.parse(userDefaults) : JSON.parse(JSON.stringify(DEFAULT_DRILLS)));
-    if (customData) userCustomDrills = JSON.parse(customData);
+    userCustomDrills = customData ? JSON.parse(customData) : JSON.parse(JSON.stringify(DEFAULT_USER_CUSTOM_DRILLS));
     normalizeDrills();
 }
 
